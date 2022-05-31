@@ -1,15 +1,11 @@
 #!/usr/bin/python3
-"""Rectangle"""
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+""" empty class BaseGeometry"""
 
 
-class Rectangle(BaseGeometry):
-    """Class Rectangle that inherits from BaseGeometry
-    (7-base_geometry.py)."""
-
+class Rectangle(__import__('7-base_geometry').BaseGeometry):
+    """ empty class BaseGeometry"""
     def __init__(self, width, height):
-        """Instantiation with width and height"""
-        BaseGeometry.integer_validator(self, "width", width)
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
         self.__width = width
-        BaseGeometry.integer_validator(self, "height", height)
         self.__height = height
