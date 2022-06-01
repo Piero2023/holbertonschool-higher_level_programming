@@ -1,28 +1,48 @@
 #!/usr/bin/python3
-"""Student to JSON"""
+"""
+Write a class Student
+that defines a student by
+"""
 
 
 class Student:
-    """Defines a student"""
+    """
+    The class Student
+    """
+
     def __init__(self, first_name, last_name, age):
-        """Initializes the data"""
+        """
+        initializes arguments
+        """
+
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """Returns a dictionary representation of a Student instance"""
-        if attrs is None:
-            return self.__dict__
-        new_dict = {}
-        for i in attrs:
-            try:
-                new_dict[i] = self.__dict__[i]
-            except:
-                pass
-        return new_dict
+        """
+        return representation
+        """
+
+        myDict = {}
+        if type(attrs) is list:
+            for i in attrs:
+                try:
+                    myDict[i] = self.__dict__[i]
+                except KeyError:
+                    pass
+
+            return myDict
+
+        return self.__dict__
 
     def reload_from_json(self, json):
-        """Replaces all attributes of the Student instance"""
+        """
+        method reload from json
+        """
+
         for i in json:
-            self.__dict__.update({i: json[i]})
+            try:
+                self.__dict__[i] = json[i]
+            except Exception as e:
+                pass
